@@ -1,2 +1,4 @@
 products
-{{ message }}
+<br/><br/>
+'| safe'를 추가하면 app.js의 nunjucks의 'autoescape'를 false로 설정하지 않아도 html 태그 사용이 가능하다.
+{{ message | safe }}
