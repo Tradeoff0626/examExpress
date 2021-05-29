@@ -2,7 +2,7 @@ const express = require('express');
 const nunkuscks = require('nunjucks');  //npm install nunjucks [view engine]
 const logger = require('morgan');       //npm istall morgan [console logger <terminal>]
 const bodyParser = require('body-parser');
-
+//npm install dotenv [database<mysql, postgreDB, ...> access] (ex. process.env.DB_USER)
 
 //클래스 형식으로 초기화 설정
 class App {
