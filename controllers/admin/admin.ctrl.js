@@ -24,7 +24,7 @@ exports.get_products_detail = ( req , res ) => {
     models.Products.findByPk(req.params.id).then( (product) => {
         res.render('admin/detail.html', { product : product });         //res.render( 'admin/products.html', { product });
     });
-    
+
 };
 
 //제품 입력 화면
@@ -54,6 +54,34 @@ exports.post_products_write = ( req , res ) => {
         description : req.body.description
     }).then( () => {
         res.redirect('/admin/products');
+    });
+
+}
+
+
+//제품 수정할 데이터 조회
+exports.get_products_edit = ( req , res ) => {
+    //기존에 폼에 value안에 값을 셋팅하기 위해 만든다.
+    models.Products.findByPk(req.params.id).then( (product) => {
+        res.render('admin/write.html', { product : product });
+    });
+};
+
+
+//제품 수정 데이터 전달
+exports.post_products_edit = ( req , res ) => {
+
+    models.Products.update(
+        {                                           //수정할 데이터
+            name : req.body.name,
+            price : req.body.price ,
+            description : req.body.description
+        }, 
+        {                                           //수정 조건(where)
+            where : { id: req.params.id } 
+        }
+    ).then( () => {
+        res.redirect('/admin/products/detail/' + req.params.id );       //이전 상세 페이지로 이동
     });
 
 }

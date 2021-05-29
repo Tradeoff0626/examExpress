@@ -25,5 +25,9 @@ router.get('/products/write', ctrl.get_products_write );
 
 router.post('/products/write', ctrl.post_products_write );
 
+router.get('/products/edit/:id', ctrl.get_products_edit );
+
+router.post('/products/edit/:id', ctrl.post_products_edit );
+
 
 module.exports = router;

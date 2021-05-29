@@ -1,20 +1,21 @@
+<!-- 제품 입력/수정 겸용 템플릿-->
 {% set title = "제품 등록" %}
 {% extends "layout/base.html" %}
  
 {% block content -%}
-    <form action="" method="post">          <!-- action을 비워두면 현재 url이 적용-->
+    <form action="" method="post">          <!-- action을 비워두면 현재 url이 적용. 입력/수정 화면 유동적으로 url이 적용됨.-->
         <table class="table table-bordered">
             <tr>
                 <th>제품명</th>
-                <td><input type="text" name="name" class="form-control"/></td>
+                <td><input type="text" name="name" class="form-control" value="{{ product.name }}"/> </td>
             </tr>
             <tr>
                 <th>가격</th>
-                <td><input type="text" name="price" class="form-control"/></td>
+                <td><input type="text" name="price" class="form-control" value="{{ product.price }}"/></td>
             </tr>
             <tr>
                 <th>설명</th>
-                <td><input type="text" name="description" class="form-control"/></td>
+                <td><input type="text" name="description" class="form-control" value="{{ product.description }}"/></td>
             </tr>
         </table>
         <button class="btn btn-primary">작성하기</button>
