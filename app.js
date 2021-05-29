@@ -37,7 +37,17 @@ app.get('/', (req, res) => {
 
 //routing 등록(/admin) - admin 변수에 설정된 경로에 해당하는 js에 export된 router를 /admin 하위 경로로 등록
 //app.use('/admin', admin);
-app.use('/admin', vipMiddleware, admin);        // '/admin' 및 하위에 모두 적용되는 최우선 미들웨어
+app.use('/admin', vipMiddleware, admin);            // '/admin' 및 하위에 모두 적용되는 최우선 미들웨어
+
+
+//error 핸들링의 경우 설정한 경로가 없는 경우 처리기 때문에 마지막에 설정함.
+app.use( (req, res, _) => {                         //미사용 파라미터는 '_'로 표시. (여기서는 next에 해당)
+    res.status(404).render('common/404.html');      //상태값이 404인 경우 404.html 랜더링
+});
+
+app.use( (req, res, _) => {
+    res.status(500).render('common/500.html');      //상태값이 500인 경우 500.html 랜더링
+});
 
 app.listen( port, () => {
     console.log(`Express listening on port `, port);
