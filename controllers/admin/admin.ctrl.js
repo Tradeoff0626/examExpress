@@ -2,9 +2,18 @@ const models = require('../../models');
 
 exports.get_products = ( _ , res) => {
     //res.send('admin products 이후 url');
-    res.render( 'admin/products.html', {        //템플릿 렌더링. 파일의 경로는 app.js의 nunjucks 설정에서 입력한 템블릿 경로 이후 url
-        message : '<h1>Hello!!!</h1>'           //2번째 인자. 템플릿에 전달할 값 <K-V>.
-    } );
+    
+    //res.render( 'admin/products.html', {        //템플릿 렌더링. 파일의 경로는 app.js의 nunjucks 설정에서 입력한 템블릿 경로 이후 url
+    //    message : '<h1>Hello!!!</h1>'           //2번째 인자. 템플릿에 전달할 값 <K-V>.
+    //} );
+
+    models.Products.findAll({
+
+    }).then( (products) => {
+        // DB에서 받은 products를 products변수명으로 내보냄
+        res.render( 'admin/products.html', { products : products });    //res.render( 'admin/products.html', { products });
+    });
+
 }
 
 exports.get_products_write = ( _ , res) => {
@@ -23,7 +32,7 @@ exports.post_products_write = ( req , res ) => {
         res.redirect('/admin/products');
     });
     */
-   
+
     //컬럼 개별 입력
     models.Products.create({
         name : req.body.name,
