@@ -1,5 +1,6 @@
 const models = require('../../models');
 
+//전체 목록 조회
 exports.get_products = ( _ , res) => {
     //res.send('admin products 이후 url');
     
@@ -16,10 +17,23 @@ exports.get_products = ( _ , res) => {
 
 }
 
+
+//단건 조회(상세보기)
+exports.get_products_detail = ( req , res ) => {
+
+    models.Products.findByPk(req.params.id).then( (product) => {
+        res.render('admin/detail.html', { product : product });         //res.render( 'admin/products.html', { product });
+    });
+    
+};
+
+//제품 입력 화면
 exports.get_products_write = ( _ , res) => {
     res.render( 'admin/write.html');
 }
 
+
+//제품 입력
 exports.post_products_write = ( req , res ) => {
     //res.send('post send test...');
     //res.send(req.body.price);             //템플릿 (write.html)에 name이 price인 속성의 input값 전달
