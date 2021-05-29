@@ -47,7 +47,7 @@ class App {
         db.sequelize.authenticate()
         .then(() => {
             console.log('Connection has been established successfully.');
-            return db.sequelize.sync();         //테이블 생성 (일회성)
+            //return db.sequelize.sync();         //테이블 생성 (일회성. 테이블이 생성되면 다시 할 필요없어서 주석 처리함)
         })
         .then(() => {
             console.log('DB Sync complete.');
