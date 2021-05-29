@@ -2,6 +2,9 @@
 {% extends "layout/base.html" %} <!-- layout/base.html에 정의된 html 코드 상속 -->
  
 
+<!-- 변수에 '| safe'를 추가하면 app.js의 nunjucks의 'autoescape'를 false로 설정하지 않아도 html 태그 사용이 가능하다. -->
+<!-- {{ message | safe }} --> 
+
 <!-- layout/base.html에 아래 block content 값을 적용 --> 
 {% block content -%}
     <table class="table table-bordered table-hover">
