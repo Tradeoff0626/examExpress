@@ -8,7 +8,7 @@
         </div>
         <div class="panel-body">
             <div style="padding-bottom: 10px">
-                작성일 : {{ product.createdAt }}
+                작성일 : {{ product.dateFormat( product.createdAt ) }}
             </div>
 
             {{ product.description }}
