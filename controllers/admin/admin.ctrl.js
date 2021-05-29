@@ -84,4 +84,16 @@ exports.post_products_edit = ( req , res ) => {
         res.redirect('/admin/products/detail/' + req.params.id );       //이전 상세 페이지로 이동
     });
 
-}
+};
+
+
+//제품 삭제(단건)
+exports.get_products_delete = ( req , res ) => {
+    models.Products.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then( () => {
+        res.redirect('/admin/products');
+    });
+};
