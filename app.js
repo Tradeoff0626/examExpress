@@ -2,13 +2,21 @@ const express = require('express');
 const nunkuscks = require('nunjucks');  //npm install nunjucks [view engine]
 const logger = require('morgan');       //npm istall morgan [console logger <terminal>]
 const bodyParser = require('body-parser');
-//npm install dotenv [database<mysql, postgreDB, ...> access] (ex. process.env.DB_USER)
+
+// db 관련
+//npm install dotenv [database<mysql, postgreDB, sqLite 등> access] (ex. process.env.DB_USER)
+//npm install mysql2
+//npm install sequelize@4.42.0
+const db = require('./models');
 
 //클래스 형식으로 초기화 설정
 class App {
 
     constructor () {
         this.app = express();
+
+        // db 접속
+        this.dbConnection();
 
         // 뷰엔진 셋팅
         this.setViewEngine();
@@ -32,6 +40,20 @@ class App {
         // 에러처리
         this.errorHandler();
 
+    }
+
+    dbConnection(){
+        // DB authentication
+        db.sequelize.authenticate()
+        .then(() => {
+            console.log('Connection has been established successfully.');
+        })
+        .then(() => {
+            console.log('DB Sync complete.');
+        })
+        .catch(err => {
+            console.error('Unable to connect to the database:', err);
+        });
     }
 
     setMiddleWare (){
