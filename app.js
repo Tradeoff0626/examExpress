@@ -24,6 +24,8 @@ app.use( logger('dev') );                                   //터미널 콘솔 �
 app.use( bodyParser.json() );                               //body-parser 초기화 설정
 app.use( bodyParser.urlencoded( { extended : false} ));     //body-parser 초기화 설정
 
+app.use( '/uploads', express.static('uploads') );           //정적파일 경로 설정 (/uploads 경로의 파일을 uploads 이름으로 접급)
+
 app.get('/', (req, res) => {
     res.send('test express...');
 });
