@@ -16,6 +16,25 @@
             Anonymous
         {% endif %}
 
+        <nav class="navbar navbar-inverse"> 
+            <div class="container-fluid"> 
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+                    <ul class="nav navbar-nav">
+                        {% from "macro/link.html" import link %}        <!-- link는 함수명처럼 변경 사용 가능-->
+                        {{ link( '/admin/products' , "List" , req_path ) }}
+                        {{ link( '/admin/products/write' , "Write" , req_path ) }}
+ 
+                        <!--
+                        <li class="active">
+                            <a href="/admin/products">List</a>
+                        </li>
+                        <li><a href="/admin/products/write">Write</a></li>
+                        -->
+                    </ul> 
+                </div> 
+            </div> 
+        </nav>
+
         {% block content %}{% endblock %}
 
     </div>    

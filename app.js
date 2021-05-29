@@ -28,6 +28,7 @@ app.use( '/uploads', express.static('uploads') );           //정적파일 경�
 
 app.use( (req, res, next) => {
     app.locals.isLogin = false;                              //global 변수 설정(test)
+    app.locals.req_path = req.path;
     next();
 });
 
