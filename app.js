@@ -1,6 +1,7 @@
 const express = require('express');
 const nunkuscks = require('nunjucks');  //npm install nunjucks [view engine]
 const logger = require('morgan');       //npm istall morgan [console logger <terminal>]
+const bodyParser = require('body-parser');
 
 const admin = require('./routes/admin');
 
@@ -19,7 +20,9 @@ nunkuscks.configure('template' ,{   //'template'는 템플릿 경로
 });
 
 //미들웨어 설정
-app.use( logger('dev') );           //터미널 콘솔 로그 출력 
+app.use( logger('dev') );                                   //터미널 콘솔 로그 출력 
+app.use( bodyParser.json() );                               //body-parser 초기화 설정
+app.use( bodyParser.urlencoded( { extended : false} ));     //body-parser 초기화 설정
 
 app.get('/', (req, res) => {
     res.send('test express...');

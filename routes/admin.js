@@ -25,4 +25,14 @@ router.get('/products', (req, res) => {
     } );
 });
 
+router.get('/products/write', (req, res) => {
+    res.render('admin/write.html');
+});
+
+router.post('/products/write', (req, res) => {
+    //res.send('post send test...');
+    //res.send(req.body.price);         //템플릿 (write.html)에 name이 price인 속성의 input값 전달
+    res.send(req.body);                 //템플릿 (write.html)에 name 속성이 설정된 모든 input값 전달
+});
+
 module.exports = router;
