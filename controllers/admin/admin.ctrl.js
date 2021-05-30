@@ -1,5 +1,18 @@
 const models = require('../../models');
 
+/*
+    models.테이블명.create(데이터)
+    
+    models.테이블명.findAll(조회조건)
+    models.테이블명.findByPk(primary key)
+    models.테이블명.findOne(조회조건)
+    
+    models.테이블명.update(데이터, 조회조건)
+    
+    models.테이블명.destroy(조회조건)
+*/
+
+
 //전체 목록 조회
 exports.get_products = ( _ , res) => {
     //res.send('admin products 이후 url');
